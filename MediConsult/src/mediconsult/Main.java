@@ -8,7 +8,7 @@ package mediconsult;
  *
  * @author estudiante
  */
-public class MediConsult {
+public class Main {
 
     /**
      * @param args the command line arguments
