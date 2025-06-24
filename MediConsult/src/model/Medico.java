@@ -1,13 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author estudiante
- */
-public class Medico {
+public class Medico extends Persona{
     
+    @Override
+    public String getTipo(){
+        return "Paciente";
+    }
+    
+    //Constructor(El mismo que el de la clase abstracta
+    
+    public Medico(String nombre, String cedula) {
+        super(nombre, cedula);
+        
+    }
 }
