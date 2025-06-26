@@ -1,11 +1,15 @@
 package view;
 
 public class MainFrame extends javax.swing.JFrame {
-
+    
+    
+    
     public MainFrame() {
         initComponents();
         setTitle("MediConsult");
         setSize(400,400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(null);
         setLocationRelativeTo(null);
         
         mostrarPanel(new PanelInicioSesion(this));

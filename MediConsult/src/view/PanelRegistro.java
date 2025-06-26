@@ -101,12 +101,13 @@ public class PanelRegistro extends javax.swing.JPanel {
                             .addComponent(textoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(radioMedico)
-                                .addComponent(radioPaciente)))))
-                .addContainerGap(191, Short.MAX_VALUE))
+                        .addComponent(botonRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioMedico)
+                            .addComponent(radioPaciente))))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,9 +131,9 @@ public class PanelRegistro extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(contrasenaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(12, 12, 12)
                 .addComponent(radioMedico)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(radioPaciente)
                 .addGap(18, 18, 18)
                 .addComponent(botonRegistrar)
@@ -140,11 +141,27 @@ public class PanelRegistro extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
         String usuario = textoUsuario.getText();
         String cedula = textoCedula.getText();
         String contrasena = String.valueOf(contrasenaUsuario.getPassword());
-
+        if(usuario.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese usuario");
+            if(cedula.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Ingrese número de cedula");
+                if(contrasena.isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Ingrese contraseña");
+                }
+                else{
+                    Paciente paciente= new Paciente(usuario, cedula, contrasena);
+                    
+                }
+            }
+        }
+        
+        
         
         mainFrame.mostrarPanel(new PanelInicioSesion(mainFrame));
     }//GEN-LAST:event_botonRegistrarActionPerformed

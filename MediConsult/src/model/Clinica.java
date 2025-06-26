@@ -15,32 +15,12 @@ public class Clinica implements Serializable{
         consultas = new ArrayList<>();
     }
 
-    public void registrarConsulta(Consulta consulta) {
-        consultas.add(consulta);
+    public void agregarPaciente(Paciente paciente){
+        
     }
-
-    public ArrayList<Consulta> obtenerHistorialPaciente(String cedulaPaciente) {
-        ArrayList<Consulta> resultado = new ArrayList<>();
-        for (Consulta c : consultas) {
-            if (c.getPaciente().getCedula().equals(cedulaPaciente)) {
-                resultado.add(c);
-            }
-        }
-        return resultado;
-    }
-
-    public ArrayList<Consulta> obtenerConsultasMedico(String cedulaMedico) {
-        ArrayList<Consulta> resultado = new ArrayList<>();
-        for (Consulta c : consultas) {
-            if (c.getMedico().getCedula().equals(cedulaMedico)) {
-                resultado.add(c);
-            }
-        }
-        return resultado;
-    }
-
     
     
+    //Getters
     public ArrayList<Paciente> getPacientes() {
         return pacientes;
     }
