@@ -144,25 +144,44 @@ public class PanelRegistro extends javax.swing.JPanel {
     
     
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
-        String usuario = textoUsuario.getText();
-        String cedula = textoCedula.getText();
-        String contrasena = String.valueOf(contrasenaUsuario.getPassword());
-        if(usuario.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Ingrese usuario");
-            if(cedula.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Ingrese número de cedula");
-                if(contrasena.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Ingrese contraseña");
-                }
-                else{
-                    Paciente paciente= new Paciente(usuario, cedula, contrasena);
-                    
-                }
-            }
+        String nombre = textoUsuario.getText().trim();
+        String cedula = textoCedula.getText().trim();
+        String contrasena = String.valueOf(contrasenaUsuario.getPassword()).trim();
+
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese nombre de usuario");
+            return;
         }
-        
-        
-        
+
+        if (cedula.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese número de cédula");
+            return;
+        }
+
+        if (contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese una contraseña");
+            return;
+        }
+
+        if (!radioMedico.isSelected() && !radioPaciente.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Seleccione si es Médico o Paciente");
+            return;
+        }
+
+        if (radioMedico.isSelected()) {
+            Medico medico = new Medico(nombre, cedula, contrasena);
+            mainFrame.getClinica().agregarMedico(medico);
+        } else if (radioPaciente.isSelected()) {
+            Paciente paciente = new Paciente(nombre, cedula, contrasena);
+            mainFrame.getClinica().agregarPaciente(paciente);
+        }
+
+        // Guardar la clínica con el nuevo registro
+        mainFrame.getClinica().guardar();
+
+        JOptionPane.showMessageDialog(this, "Registro exitoso");
+
+        // Volver al panel de inicio de sesión
         mainFrame.mostrarPanel(new PanelInicioSesion(mainFrame));
     }//GEN-LAST:event_botonRegistrarActionPerformed
 

@@ -1,8 +1,10 @@
 package view;
 
+import model.*;
+
 public class MainFrame extends javax.swing.JFrame {
     
-    
+    private Clinica clinica;
     
     public MainFrame() {
         initComponents();
@@ -12,6 +14,7 @@ public class MainFrame extends javax.swing.JFrame {
         setLayout(null);
         setLocationRelativeTo(null);
         
+        clinica=Clinica.cargar();
         mostrarPanel(new PanelInicioSesion(this));
     }
     
@@ -20,6 +23,12 @@ public class MainFrame extends javax.swing.JFrame {
     setContentPane(panel);
     revalidate();
     repaint();
+    }
+    
+    
+    //Toca pedirle al mainframe que traiga la clinica que se creó
+    public Clinica getClinica() {
+        return clinica;
     }
     
     

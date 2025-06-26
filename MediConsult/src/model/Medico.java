@@ -1,6 +1,6 @@
 package model;
 
-public class Medico extends Persona{
+public class Medico extends Persona {
     
     @Override
     public String getTipo(){

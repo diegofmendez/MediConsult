@@ -4,6 +4,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+import model.*;
+
 /**
  *
  * @author dfmen
@@ -113,7 +116,34 @@ public class PanelInicioSesion extends javax.swing.JPanel {
 
     private void botonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarSesionActionPerformed
         // TODO add your handling code here:
-        
+            String nombre = textoUsuario.getText().trim();
+            String contrasena = String.valueOf(contrasenaUsuario.getPassword()).trim();
+
+            if (nombre.isEmpty() || contrasena.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese usuario y contraseña");
+                return;
+            }
+
+            // Buscar en pacientes
+            for (Paciente p : mainFrame.getClinica().getPacientes()) {
+                if (p.getNombre().equals(nombre) && p.getContrasena().equals(contrasena)) {
+                    JOptionPane.showMessageDialog(this, "Bienvenido paciente " + nombre);
+                    mainFrame.mostrarPanel(new PanelPrincipal(mainFrame));
+                    return;
+                }
+            }
+
+            // Buscar en médicos
+            for (Medico m : mainFrame.getClinica().getMedicos()) {
+                if (m.getNombre().equals(nombre) && m.getContrasena().equals(contrasena)) {
+                    JOptionPane.showMessageDialog(this, "Bienvenido médico " + nombre);
+                    mainFrame.mostrarPanel(new PanelPrincipal(mainFrame));
+                    return;
+                }
+            }
+
+            // Si no se encontró
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
     }//GEN-LAST:event_botonIniciarSesionActionPerformed
 
     //Boton registro
