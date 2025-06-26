@@ -6,30 +6,24 @@ public abstract class Persona {
     
     private String nombre;
     private String cedula;
+    private String contrasena;
 
     public abstract String getTipo();
     
-    //Constructor y getter y setter
     
-    //Constructor
-    public Persona(String nombre, String cedula) {
+    //COnstructor y getter
+    public Persona(String nombre, String cedula, String contrasena) {
         this.nombre = nombre;
         this.cedula = cedula;
+        this.contrasena = contrasena;
     }
-    
-    //Getter y setter
     public String getNombre() {
         return nombre;
-    }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
     public String getCedula() {
         return cedula;
     }
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public String getContrasena() {
+        return contrasena;
     }
-    
-    
 }

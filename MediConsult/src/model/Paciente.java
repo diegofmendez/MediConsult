@@ -10,8 +10,8 @@ public class Paciente extends Persona{
     
     //Constructor(El mismo que el de la clase abstracta
     
-    public Paciente(String nombre, String cedula) {
-        super(nombre, cedula);
+    public Paciente(String nombre, String cedula, String contrasena) {
+        super(nombre, cedula, contrasena);
         
     }
 }
